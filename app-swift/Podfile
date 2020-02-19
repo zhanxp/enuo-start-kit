@@ -1,0 +1,23 @@
+workspace 'enuocms'
+project 'ios/ios.xproject'
+
+platform :ios,'8.0'
+use_frameworks!
+
+def pods
+    pod 'MMDrawerController', '~> 0.6.0'
+    pod 'MBProgressHUD'
+    pod 'FMDB', '~> 2.5'
+    pod 'LKDBHelper'
+    pod 'MJRefresh', '~> 2.4.12'
+    pod 'SDWebImage', '~> 3.7.2'
+    pod 'OpenUDID', '~> 1.0.0'
+    pod 'HandyJSON', '~> 4.0.0-beta.1'
+    pod 'SwiftyJSON'
+    pod 'Alamofire', '~> 4.5'
+    pod 'Toaster'
+end
+
+target 'ios' do
+  pods
+end

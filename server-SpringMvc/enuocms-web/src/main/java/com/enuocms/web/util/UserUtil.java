@@ -1,0 +1,17 @@
+package com.enuocms.web.util;
+
+import org.apache.shiro.SecurityUtils;
+
+import com.enuocms.web.shiro.ShiroUser;
+
+/**
+ * Created by zhanxiaoping on 2017/8/28.
+ * zhanxp@me.com
+ */
+public class UserUtil {
+
+	public static ShiroUser getCurrentUser() {
+		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+		return user;	
+	}
+}

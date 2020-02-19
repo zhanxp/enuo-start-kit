@@ -1,0 +1,61 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    EntTypes
+                </th>
+                <th>
+                    EntStatus
+                </th>
+                <th>
+                    Creater
+                </th>
+                <th>
+                    Updater
+                </th>
+                <th>
+                    CreateDate
+                </th>
+                <th>
+                    UpdateDate
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of list">
+                <td>
+                    {{ item.title }}
+                </td>
+                <td>
+                    {{ item.ent_types }}
+                </td>
+                <td>
+                    {{ item.ent_status }}
+                </td>
+                <td>
+                    {{ item.creater }}
+                </td>
+                <td>
+                    {{ item.updater }}
+                </td>
+                <td>
+                    {{ item.create_date | date: 'yyyy-MM-dd'}}
+                </td>
+                <td>
+                    {{ item.update_date | date: 'yyyy-MM-dd'}}
+                </td>
+                <td>
+                    <a routerLink="{{ '/category/edit/' + item.id }}">Edit</a>
+                    <a routerLink="{{ '/category/detail/' + item.id }}">Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,60 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    EntTypes
+                </th>
+                <th>
+                    EntStatus
+                </th>
+                <th>
+                    Creater
+                </th>
+                <th>
+                    Updater
+                </th>
+                <th>
+                    CreateDate
+                </th>
+                <th>
+                    UpdateDate
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="item in list track by $index">
+                <td>
+                    {{ item.title }}
+                </td>
+                <td>
+                    {{ item.ent_types }}
+                </td>
+                <td>
+                    {{ item.ent_status }}
+                </td>
+                <td>
+                    {{ item.creater }}
+                </td>
+                <td>
+                    {{ item.updater }}
+                </td>
+                <td>
+                    {{ item.create_date | date:'yyyy-MM-dd HH:mm:ss' }}
+                </td>
+                <td>
+                    {{ item.update_date | date:'yyyy-MM-dd HH:mm:ss' }}
+                </td>
+                <td>
+                    <a ui-sref="category_edit({ id: item.id })">Edit</a>
+                    <a ui-sref="category_detail({ id: item.id })">Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

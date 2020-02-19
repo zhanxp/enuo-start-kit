@@ -1,0 +1,21 @@
+{
+  "name": "enuocms",
+  "description": "",
+  "main": "",
+  "authors": [
+    "zxp <zxp@1mdata.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/zhanxp/enuocms",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.1.0"
+  }
+}

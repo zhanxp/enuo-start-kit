@@ -1,0 +1,38 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using Com.EnuoCms.Model;
+using Com.EnuoCms.Model.Entities;
+
+namespace Com.EnuoCms.IService
+{
+    public class EnuoCmsDataContex : DbContext
+    {
+        public EnuoCmsDataContex() : base("EnuoCmsDataContex") { }
+       
+
+        public EnuoCmsDataContex(bool isLazy)
+        {
+            this.Configuration.ProxyCreationEnabled = isLazy;
+            this.Configuration.LazyLoadingEnabled = isLazy;
+        }
+
+        public virtual void Commit()
+        {
+            base.SaveChanges();
+        }
+
+{0}
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+       
+    }
+}

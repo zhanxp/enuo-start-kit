@@ -1,0 +1,25 @@
+<div class="row login-box">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">登录</div>
+            <div class="panel-body">
+                <form novalidate>
+                    <div class="form-group">
+                        <label htmlFor="username">UserName</label>
+                        <input type="text" class="form-control" [(ngModel)]="loginForm.username" required name="username" placeholder="username" />
+                    </div>
+                    <div class="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="loginForm.password" required name="password" placeholder="password" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" value="true" [(ngModel)]="loginForm.rememberMe" name="rememberMe" /> 记住我
+                        </label>
+                    </div>
+                    <button type="submit" (click)="doLogin()" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

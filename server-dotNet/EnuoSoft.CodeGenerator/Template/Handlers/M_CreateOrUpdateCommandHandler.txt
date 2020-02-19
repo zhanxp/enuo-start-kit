@@ -1,0 +1,35 @@
+﻿
+using Com.EnuoCms.IService;
+using Com.EnuoCms.Model.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Com.EnuoCms.Service
+{
+    public class {0}CreateOrUpdateCommandHandler : ICommandHandler<{0}CreateOrUpdateCommand>
+    {
+        private readonly IUnitOfWork unitOfWork;
+
+        private readonly I{0}Repository {0}Repository;
+        public {0}CreateOrUpdateCommandHandler(I{0}Repository {0}Repository, IUnitOfWork unitOfWork)
+        {
+            this.{0}Repository = {0}Repository;
+            this.unitOfWork = unitOfWork;
+        }
+
+        public ICommandResult Execute({0}CreateOrUpdateCommand command)
+        {
+            {0} ent = command.ent;
+            if (ent.ID <= 0)
+                {0}Repository.Add(ent);
+            else
+                {0}Repository.Update(ent);
+
+            unitOfWork.Commit();
+            return new CommandResult(true);
+        }
+    }
+}

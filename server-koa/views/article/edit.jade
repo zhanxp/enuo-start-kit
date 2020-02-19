@@ -1,0 +1,10 @@
+extends ../shared/_layout
+
+block content
+  h2.page-header= title
+  form(action="")
+    .form-horizontal
+      .form-group
+        label.control-label.col-md-2 Title
+        .col-md-8
+          input.form-control(value='#{model.title}')

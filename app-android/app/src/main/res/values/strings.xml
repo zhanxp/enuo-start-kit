@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">enuocms</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <!-- time -->
+    <string name="days_ago">天前</string>
+    <string name="hours_ago">小时前</string>
+    <string name="minutes_ago">分钟前</string>
+    <string name="just_now">刚刚</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="month">月</string>
+    <string name="meter">米</string>
+    <string name="km">千米</string>
+
+
+    <string name="empty_list_view_remark">暂无匹配结果</string>
+    <string name="network_result_error">结果异常</string>
+    <string name="network_connected_error">网络异常</string>
+    <string name="network_exception_remark">Sorry，页面加载失败，请检查网络是否连接或重新加载</string>
+    <string name="refresh_button_name">刷新试试</string>
+
+</resources>

@@ -1,0 +1,19 @@
+﻿using Com.EnuoCms.Model.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Com.EnuoCms.IService
+{
+    public class {0}CreateOrUpdateCommand :ICommand
+    {
+        public {0} ent;
+
+        public {0}CreateOrUpdateCommand({0} ent)
+        {
+            this.ent = ent;
+        }
+    }
+}

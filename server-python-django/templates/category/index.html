@@ -1,0 +1,18 @@
+{% extends "shared/_layout.html" %} {% block title %}
+<title> Home </title>{% endblock %} {% block contentBody %}
+<h2 class="page-header">
+    Category
+</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+    </tr>
+    {% for item in list %}
+    <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

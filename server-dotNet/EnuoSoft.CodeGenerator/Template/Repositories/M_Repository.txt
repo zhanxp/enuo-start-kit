@@ -1,0 +1,19 @@
+﻿using Com.EnuoCms.Model.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Com.EnuoCms.IService;
+
+namespace Com.EnuoCms.Service
+{
+    public class {0}Repository : RepositoryBase<{0}>, I{0}Repository
+    {
+        public {0}Repository(IDatabaseFactory databaseFactory)
+            : base(databaseFactory)
+        {
+
+        }
+    }
+}

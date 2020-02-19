@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-4 col-md-offset-4">
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">登录</div>
+            <div class="panel-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">UserName</label>
+                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="UserName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" name="Password" id="Password" placeholder="Password">
+                    </div>
+                    <input type="hidden" value="@ViewBag.returnUrl" name="returnUrl" />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    @Html.ValidationSummary()
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

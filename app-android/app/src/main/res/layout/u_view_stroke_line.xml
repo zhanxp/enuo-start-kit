@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/strokeLine"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/title_padding_lef_rig"
+    android:paddingRight="@dimen/title_padding_lef_rig"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:layerType="software"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/background_stroke_line" />
+</LinearLayout>

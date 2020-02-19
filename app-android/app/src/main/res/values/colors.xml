@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- common -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray_1">#ff666666</color>
+    <color name="gray_2">#ff333333</color>
+    <color name="gray_3">#ff323232</color>
+    <color name="gray_4">#d9d9d9</color>
+    <color name="gray_5">#c2c2c2</color>
+    <color name="gray_6">#e6e6e6</color>
+    <color name="gray_7">#d8d7d7</color>
+    <color name="green_1">#1c881c</color>
+    <color name="blue_1">#32b6e5</color>
+    <color name="blue_link">#1c88d0</color>
+
+    <!-- 列表区 -->
+    <color name="table_line">#b3b3b3</color>
+    <color name="table_bg">#ededef</color>
+
+    <color name="table_item_title_first_level">#4c4c4c</color>
+    <color name="table_item_title_second_level">#666666</color>
+    <color name="table_item_title_third_level">#999999</color>
+    <color name="table_item_sectiontitle">#4c4c4c</color>
+
+    <color name="tab_line">#cfcfd1</color>
+
+    <!-- 列表分割区 -->
+    <color name="title_item_font_color">#4c4c4c</color>
+    <color name="title_item_side_color">#b3b3b3</color>
+    <!-- 列表项目区 -->
+    <color name="item_row_top_font_color">#4c4c4c</color>
+    <color name="item_row_top_state_font_color">#7dca60</color>
+    <color name="item_row_mid_font_height">#666666</color>
+    <color name="item_row_bot_font_height">#999999</color>
+    <color name="item_separator_line_color">#cccccc</color>
+    <color name="table_cell_light_bg">#d9edf7</color>
+
+</resources>

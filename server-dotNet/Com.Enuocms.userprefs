@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{204BEA22-CAD5-4E2A-869A-6C78ADF6E719}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Com.EnuoCms.Web/Views/Article/Edit.cshtml">
+    <Files>
+      <File FileName="Com.EnuoCms.Web/Views/Shared/_Pager.cshtml" Line="71" Column="91" />
+      <File FileName="Com.EnuoCms.Web/Views/Article/Edit.cshtml" Line="24" Column="106" />
+      <File FileName="Com.EnuoCms.Web/Views/Article/Details.cshtml" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/Peter/Documents/Project/enuocms/doNet/mvc/EnuoSoft.CodeGenerator/Program.cs" relfile="EnuoSoft.CodeGenerator/Program.cs" line="66" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Com.EnuoCms.Web PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.EnuoSoft.CodeGenerator PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

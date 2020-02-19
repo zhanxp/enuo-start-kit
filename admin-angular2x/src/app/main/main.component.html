@@ -1,0 +1,45 @@
+<div>
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+                <a class="navbar-brand" href="#">
+                    {{ title }}
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="" *ngFor="let item of menus">
+                        <a routerLink="{{ item.path }}"> {{item.text}}</a>
+                    </li>
+                </ul>
+
+                <ul *ngIf="!userInfo.id" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="loginLink" routerLink="/login">登录</a>
+                    </li>
+                </ul>
+
+                <ul *ngIf="userInfo.id" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a routerLink="admin"> {{ userInfo.name }} 你好！</a>
+                    </li>
+                    <li>
+                        <a (click)="onLogout()">注销</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+    <div class="container body-content">
+        <router-outlet></router-outlet>
+        <footer>
+            <p>&copy; 2018 - 我的 Angular 应用程序</p>
+        </footer>
+    </div>
+</div>

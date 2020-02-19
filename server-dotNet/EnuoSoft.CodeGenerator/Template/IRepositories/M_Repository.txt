@@ -1,0 +1,14 @@
+﻿using Com.EnuoCms.Model.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Com.EnuoCms.IService;
+
+namespace Com.EnuoCms.IService
+{
+    public interface I{0}Repository : IRepository<{0}>
+    {
+    }
+}

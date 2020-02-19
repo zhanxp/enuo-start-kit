@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Com.EnuoCms.Model.Entities.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2  class="page-header">
+    Category
+    <small>
+       @Html.ActionLink("Create New", "Create")
+    </small>
+</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntTypes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creater)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Updater)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntTypes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creater)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Updater)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

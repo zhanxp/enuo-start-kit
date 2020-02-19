@@ -1,0 +1,77 @@
+﻿@{
+    int pageIndex = (int)ViewData["pageIndex"];
+    int pageSize = (int)ViewData["pageSize"];
+    int total = (int)ViewData["total"];
+    string url = ViewData["url"] != null ? (string)ViewData["url"] : "?";
+    int pageCount = (int)((total + pageSize - 1) / pageSize);
+
+  
+}
+
+
+@if(total <=0){
+    
+}else{
+<div class="page-mod">
+    <div class="result">
+           共 @total 条数据,分 @pageCount 页,每页显示 @pageSize 条
+    </div>
+      <nav class="text-right">
+        <ul class="pagination">
+            @if(pageIndex == 1){
+                <li class="prev disabled"><a >首页</a></li>
+                <li class="prev disabled"><a >&nbsp;&lt;</a></li>
+              }else{
+                    <li class="prev"><a href='@String.Format("{0}pageIndex={1}",url,1)' data-page="1" title="首页">首页</a></li>
+                    <li class="prev"><a href='@String.Format("{0}pageIndex={1}",url,pageIndex-1)' data-page='@String.Format("{0}",pageIndex-1)' title="上一页">&nbsp;&lt;</a></li>
+              }
+
+		         @{ int start=1; } 
+           @if (pageIndex > 4){
+                start=(pageIndex - 1);
+            
+                <li><a href='@String.Format("{0}pageIndex={1}",url,1)'   data-page="1" >1</a></li>
+                <li><a href='@String.Format("{0}pageIndex={1}",url,2)'   data-page="2" >2</a></li>
+                <li class="disabled"><a>...</a></li>
+           }
+
+			 @{ 
+                int end=(pageIndex + 1);
+                if (end > pageCount){
+                    end=pageCount;
+                }
+            } 
+
+			 @for(int i=start;i<=end;i++){
+                if(pageIndex==i){
+                     <li class="active" ><a >@i</a></li>
+                }else{
+                    <li><a href='@String.Format("{0}pageIndex={1}",url,i)'  data-page="@i" >@i</a></li>
+                }
+            }
+            
+             @if (end < pageCount - 2){
+                 <li class="disabled"><a>&hellip;</a></li>
+            }
+
+			 @if (end < pageCount - 1){
+                <li><a href='@String.Format("{0}pageIndex={1}",url,pageCount - 1 )'  data-page='@String.Format("{0}",pageCount-1)' >@String.Format("{0}",pageCount-1)</a></li>
+            }
+			
+          @if (end < pageCount){
+                <li><a href='@String.Format("{0}pageIndex={1}",url,pageCount)'  data-page="@pageCount" >@pageCount</a></li>
+            }
+            
+            @if (pageIndex == pageCount){
+                <li class="next disabled" ><a >&gt;&nbsp;</a></li>
+                <li class="next disabled" ><a >末页</a></li>
+            }else{
+                
+                <li class="next" ><a href='@String.Format("{0}pageIndex={1}",url,pageIndex+1)'  data-page='@String.Format("{0}",pageIndex+1)'  title="下一页">&gt;&nbsp;</a></li>
+                <li class="next" ><a href='@String.Format("{0}pageIndex={1}",url,pageCount)' data-page="@pageCount" title="末页" >末页</a></li>
+            }
+			
+        </ul>
+      </nav>
+</div>
+}

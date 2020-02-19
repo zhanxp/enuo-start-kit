@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Com.EnuoCms.Core.Common;
+
+namespace Com.EnuoCms.IService
+{
+    public class {0}DeleteCommand : ICommand
+    {
+        public List<long> itemId;
+        public {0}DeleteCommand(List<long> itemId)
+        {
+            this.itemId = itemId;
+        }
+    }
+}

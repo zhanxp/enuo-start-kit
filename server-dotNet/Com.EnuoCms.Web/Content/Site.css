@@ -1,0 +1,44 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+.validation-summary-errors {
+}
+
+.validation-summary-errors ul,.validation-summary-errors li{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.validation-summary-errors li{
+    padding:5px;
+    color:red;
+}
+
+.page-mod {
+    position:relative;
+    
+}
+    .page-mod .result {
+       position:absolute;
+    }
+    
+    .page-mod nav .pagination {
+        margin: 0;
+    }

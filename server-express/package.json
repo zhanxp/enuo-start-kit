@@ -1,0 +1,32 @@
+{
+    "name": "enuocms-express",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "co-redis": "^2.1.1",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.3",
+        "cors": "^2.8.4",
+        "debug": "^2.6.9",
+        "enuo-core": "git+https://github.com/zhanxp/enuo-core.git",
+        "express": "^4.16.1",
+        "express-session": "^1.15.6",
+        "jade": "^1.11.0",
+        "moment": "^2.18.1",
+        "mongodb": "^2.2.31",
+        "morgan": "^1.9.0",
+        "mysql": "^2.14.1",
+        "mysql-pro": "^1.0.1",
+        "node-uuid": "^1.4.8",
+        "redis": "^2.8.0",
+        "serve-favicon": "^2.4.5",
+        "tracer": "^0.8.11"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1"
+    }
+}

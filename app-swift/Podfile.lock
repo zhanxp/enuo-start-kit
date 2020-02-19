@@ -1,0 +1,60 @@
+PODS:
+  - Alamofire (4.5.1)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - HandyJSON (4.0.0-beta.1)
+  - LKDBHelper (2.4.4):
+    - LKDBHelper/standard (= 2.4.4)
+  - LKDBHelper/standard (2.4.4):
+    - FMDB
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (2.4.12)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+  - OpenUDID (1.0.0)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SwiftyJSON (3.1.4)
+  - Toaster (2.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - FMDB (~> 2.5)
+  - HandyJSON (~> 4.0.0-beta.1)
+  - LKDBHelper
+  - MBProgressHUD
+  - MJRefresh (~> 2.4.12)
+  - MMDrawerController (~> 0.6.0)
+  - OpenUDID (~> 1.0.0)
+  - SDWebImage (~> 3.7.2)
+  - SwiftyJSON
+  - Toaster
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
+  LKDBHelper: cf467ff69aaf1e13bd4964aca3a79881d54c6d14
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: ca8e9589895977df32d379d46e6b8a5450b3ff44
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Toaster: 8c3225dc465bef4aa57e147a288724576df8e439
+
+PODFILE CHECKSUM: ee3ceeddd494fa2112c68e6dd7b4ea58f4efdb39
+
+COCOAPODS: 1.3.1

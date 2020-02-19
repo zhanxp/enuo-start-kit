@@ -1,0 +1,30 @@
+﻿@model Com.EnuoCms.Model.Entities.Admin
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+
+<h2  class="page-header">
+    Profile
+</h2>
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>

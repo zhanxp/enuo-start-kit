@@ -1,0 +1,72 @@
+﻿@model Com.EnuoCms.Model.Entities.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2  class="page-header">Category Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntTypes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntTypes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creater)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updater)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+">
+
+    <description>Spring公共配置</description>
+
+    <!--<context:annotation-config/>-->
+    <context:property-placeholder location="classpath:conf/jdbc.properties,classpath:conf/enuocms.properties" />
+
+    <util:properties id="settings" location="classpath:conf/enuocms.properties" />
+
+
+    <context:component-scan base-package="com.enuocms.account.*.service,com.enuocms.account.*.dao,com.enuocms.account.*.mapper">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
+    <context:component-scan base-package="com.enuocms.business.*.service,com.enuocms.business.*.dao,com.enuocms.business.*.mapper">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
+
+    <import resource="applicationContext-account.xml"/>
+    <import resource="applicationContext-bueiness.xml"/>
+    <!-- <import resource="applicationContext-email.xml"/> -->
+    <!-- <import resource="applicationContext-quartz.xml"/> -->
+    <import resource="applicationContext-shiro.xml"/>
+    
+    <!-- 异常友好处理 -->
+    <bean id="exceptionHandler" class="com.enuocms.web.interceptor.CommonExceptionResolver"/>
+
+</beans>

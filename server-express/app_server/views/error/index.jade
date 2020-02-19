@@ -1,0 +1,6 @@
+extends ../shared/_empty
+
+block content
+  h2.page-header Error
+  h1 #{error.status} #{message}
+  pre #{error.stack}

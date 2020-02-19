@@ -1,0 +1,40 @@
+﻿using Com.EnuoCms.IService;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Com.EnuoCms.Service
+{
+    public class {0}DeleteCommandHandler : ICommandHandler<{0}DeleteCommand>
+    {
+        private readonly IUnitOfWork unitOfWork;
+        private readonly I{0}Repository {0}Repository;
+        public {0}DeleteCommandHandler(I{0}Repository {0}Repository, IUnitOfWork unitOfWork)
+        {
+            this.{0}Repository = {0}Repository;
+            this.unitOfWork = unitOfWork;
+        }
+
+        public ICommandResult Execute({0}DeleteCommand command)
+        {
+            try
+            {
+                foreach (var item in command.itemId)
+                {
+                    var voidReason = {0}Repository.GetById(item);
+                    {0}Repository.Delete(voidReason);
+                }
+              
+                unitOfWork.Commit();
+
+                return new CommandResult(true);
+            }
+            catch (Exception ex)
+            {
+                return new CommandResult(false,ex.Message);
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- 列表分割区 -->
+    <dimen name="title_item_height">19dp</dimen>
+    <dimen name="title_item_font_height">11dp</dimen>
+    <dimen name="title_item_side_height">0.5dp</dimen>
+
+    <!-- 标题区 -->
+    <dimen name="title_padding_lef_rig">10dp</dimen>
+    <dimen name="in_coming_news_margin_top">10dp</dimen>
+
+    <!-- 列表项目区 -->
+    <dimen name="table_item_separate_line_height">0.5dp</dimen>
+    <dimen name="table_item_padding_top_bot_bigger">15dp</dimen>
+    <dimen name="table_item_padding_top_bot">10dp</dimen>
+    <dimen name="table_item_padding_top_bot_small">8dp</dimen>
+    <dimen name="table_item_padding_top_bot_smaller">5dp</dimen>
+    <dimen name="table_item_padding_rig">23dp</dimen>
+    <dimen name="table_item_padding_lef">23dp</dimen>
+    <dimen name="table_item_title_first_level">14sp</dimen>
+    <dimen name="table_item_title_second_level">12sp</dimen>
+    <dimen name="table_item_title_third_level">11sp</dimen>
+    <dimen name="item_row_top_state_font_height">12dp</dimen>
+    <dimen name="item_row_mid_font_height">12dp</dimen>
+    <dimen name="item_separator_line_height">0.5dp</dimen>
+    <dimen name="item_separator_line_padding_top">10dp</dimen>
+    <dimen name="item_separator_line_padding_bot">10dp</dimen>
+    <dimen name="item_horizon_gaps">60dp</dimen>
+    <dimen name="item_horizon_gaps_less">30dp</dimen>
+    <dimen name="item_horizon_gaps_less_less">10dp</dimen>
+    <dimen name="item_horizon_gaps_less_less_less">5dp</dimen>
+    <dimen name="item_vertical_gaps_less">1dp</dimen>
+    <dimen name="item_vertical_gaps">5dp</dimen>
+    <dimen name="item_vertical_gaps_bigger">6dp</dimen>
+    <dimen name="item_range_title_font_size">14dp</dimen>
+    <dimen name="item_cell_title_edit_height">45dp</dimen>
+    <dimen name="item_cell_notification_type">30dp</dimen>
+    <dimen name="item_cell_value_right_gaps">5dp</dimen>
+    <dimen name="item_cell_user_logo">50dp</dimen>
+    <dimen name="item_cell_user_logo_radius">25dp</dimen>
+    <dimen name="item_cell_chat_user_logo">50dp</dimen>
+</resources>

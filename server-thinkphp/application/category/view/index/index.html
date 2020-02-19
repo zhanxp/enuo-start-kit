@@ -1,0 +1,69 @@
+{extend name="common@_layout"} {block name="title"}
+<title>{$title}</title>
+{/block} {block name="htmlHead"} {/block} {block name="contentBody"}
+<h2 class="page-header">
+    Ccategory
+    <small>
+        <a href="/category/add">Create</a>
+    </small>
+</h2>
+<table>
+
+    <table class="table">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                EntTypes
+            </th>
+            <th>
+                EntStatus
+            </th>
+            <th>
+                Creater
+            </th>
+            <th>
+                Updater
+            </th>
+            <th>
+                CreateDate
+            </th>
+            <th>
+                UpdateDate
+            </th>
+            <th></th>
+        </tr>
+        {volist name="list" id="item"}
+        <tr>
+            <td>
+                {$item.title}
+            </td>
+            <td>
+                {$item.ent_types}
+            </td>
+            <td>
+                {$item.ent_status}
+            </td>
+            <td>
+                {$item.creater}
+            </td>
+            <td>
+                {$item.updater}
+            </td>
+            <td>
+                {$item.create_date}
+            </td>
+            <td>
+                {$item.update_date}
+            </td>
+            <td>
+                <a href="/category/edit/{$item.id}">Edit</a> |
+                <a href="/category/details/{$item.id}">Details</a>
+            </td>
+        </tr>
+        {/volist}
+    </table>
+
+
+    {/block} {block name="htmlScript"} {/block}
