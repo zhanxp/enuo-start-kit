@@ -14,7 +14,7 @@
     "license": "ISC",
     "devDependencies": {
         "@uirouter/angularjs": "^1.0.19",
-        "angular": "1.6.8",
+        "angular": "1.7.9",
         "angular-cookies": "^1.7.2",
         "angular-sanitize": "1.6.8",
         "babel-core": "^6.26.0",
