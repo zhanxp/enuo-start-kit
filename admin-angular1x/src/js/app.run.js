@@ -24,8 +24,7 @@
             };
 
             $rootScope.confirm = function(msg, fn1, fn2) {
-                var r = confirm(msg);
-                if (r == true) {
+                if (confirm(msg)) {
                     fn1();
                 } else {
                     fn2();

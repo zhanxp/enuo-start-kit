@@ -16,7 +16,7 @@
         "@uirouter/angularjs": "^1.0.19",
         "angular": "1.7.9",
         "angular-cookies": "^1.7.2",
-        "angular-sanitize": "1.6.8",
+        "angular-sanitize": "^1.7.9",
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.1",
         "babel-plugin-component": "^0.10.0",

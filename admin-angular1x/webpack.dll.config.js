@@ -10,7 +10,14 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        vendor: ['jquery', 'angular', '@uirouter/angularjs', 'babel-polyfill', 'bootstrap/dist/css/bootstrap.min.css', 'bootstrap/dist/js/bootstrap.min.js']
+        vendor: ['jquery', 
+          'angular', 
+          'angular-sanitize',
+          '@uirouter/angularjs', 
+          'babel-polyfill',
+          'bootstrap/dist/css/bootstrap.min.css', 
+          'bootstrap/dist/js/bootstrap.min.js'
+        ]
     },
     output: {
         path: resolve('dll'),

@@ -41,13 +41,14 @@
             });
 
 
-            $scope.logout = function() {
+            $scope.onLogout = function () {
                 $rootScope.confirm("确定要退出吗?", function() {
                     mainSrv.logout();
                     $rootScope.setUserInfo(null);
                     $state.go($rootScope.config.loginview.name);
                 }, function() {});
             };
+
 
             $rootScope.$on("user_did_changed", function(evnet, args) {
                 if (args.data) {

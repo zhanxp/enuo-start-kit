@@ -168,7 +168,7 @@ app.on('error', function(err) {
     }
 });
 
-app.listen(8090);
+app.listen(config.port);
 
 enuocms.mysql.debug = config.debug;
 enuocms.mysql.connect(config.mysql);
