@@ -1,9 +1,10 @@
 const path = require('path');
+const nunjucks = require('nunjucks');
 const views = require('koa-views');
 const config = require('../config')
 
+nunjucks.configure(path.join(__dirname), { autoescape: true, noCache: config.debug });
 module.exports = views(path.join(__dirname), {
-    noCache: config.debug,
-    map: { html: 'jade' },
-    extension: 'jade'
+    map: { html: 'nunjucks' },
+    extension: 'html'
 });
