@@ -14,6 +14,9 @@ var articleServcie = {
     },
     categoryList: async function(query) {
         return await categoryDao.list(query);
+    },
+    categoryById: async function (id) {
+      return await categoryDao.findById(id);
     }
 };
 

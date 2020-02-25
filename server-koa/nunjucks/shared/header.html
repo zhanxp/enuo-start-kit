@@ -13,12 +13,14 @@
                 <li>
                     <a href="/">主页</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="/category">分类</a>
-                </li>
+                </li> -->
+                {% for item in categorys %}
                 <li>
-                    <a href="/article">文章</a>
+                  <a href="/article/{{ item.id }}">{{ item.title }}</a>
                 </li>
+                {% endfor %}
                 <li>
                     <a href="/about">关于</a>
                 </li>
@@ -26,17 +28,19 @@
             {% if user %}
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/admin">
-                            {{ user.name }}  你好！</a>
+                    <a href="/admin/profile">{{ user.name }}  你好！</a>
                 </li>
                 <li>
-                    <a href="/account/logout">注销</a>
+                  <a href="/admin">[管理]</a>
+                </li>
+                <li>
+                    <a href="/admin/account/logout" onClick="return confirm('确定要注销吗?');" >[注销]</a>
                 </li>
             </ul>
             {% else %}
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="loginLink" href="/account/login">登录</a>
+                    <a class="loginLink" href="/admin/account/login">登录</a>
                 </li>
             </ul>
             {% endif %}

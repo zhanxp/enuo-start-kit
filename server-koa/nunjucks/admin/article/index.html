@@ -1,10 +1,17 @@
-{% extends "shared/_layout.html" %} {% block title %}
+{% extends "shared/_layout.html" %} 
+
+{% block title %}
 <title>{{ title }}</title>
-{% endblock %} {% block htmlHead %} {% endblock %} {% block contentBody %}
+{% endblock %} 
+
+{% block htmlHead %} 
+{% endblock %} 
+
+{% block contentBody %}
 <h2 class="page-header">
-    Ccategory
+    Article
     <small>
-        <a href="/category/add">Create</a>
+        <a href="/article/add">Create</a>
     </small>
 </h2>
 <table>
@@ -13,6 +20,18 @@
         <tr>
             <th>
                 Title
+            </th>
+            <th>
+                Intro
+            </th>
+            <th>
+                PicUrl
+            </th>
+            <th>
+                CategoryID
+            </th>
+            <th>
+                Content
             </th>
             <th>
                 EntTypes
@@ -34,10 +53,22 @@
             </th>
             <th></th>
         </tr>
-        {% for item in list %}
+        {% for item in pageList.items %}
         <tr>
             <td>
                 {{item.title}}
+            </td>
+            <td>
+                {{item.intro}}
+            </td>
+            <td>
+                {{item.pic_url}}
+            </td>
+            <td>
+                {{item.category_id}}
+            </td>
+            <td>
+                {{item.content}}
             </td>
             <td>
                 {{item.ent_types}}
@@ -58,11 +89,17 @@
                 {{ moment(item.update_date).format("YYYY-MM-DD") }}
             </td>
             <td>
-                <a href="/category/edit/{{item.id}}">Edit</a> |
-                <a href="/category/details/{{item.id}}">Details</a>
+                <a href="/article/edit/{{item.id}}">Edit</a> |
+                <a href="/article/details/{{item.id}}">Details</a>
             </td>
         </tr>
         {% endfor %}
     </table>
+    {% include "shared/_pager.html" %} 
+    
+    
+{% endblock %} 
+    
+{% block htmlScript %} 
 
-    {% endblock %} {% block htmlScript %} {% endblock %}
+{% endblock %}

@@ -8,7 +8,8 @@ var config = require('./config');
 const session = require('koa-session');
 var flash = require('koa-flash');
 var cors = require('koa-cors');
-var enuocms = require('enuo-core');
+var core = require('enuo-core');
+var articleServcie = require('./service/article/articleServcie');
 
 /**
  * Created by zhanxiaoping 
@@ -48,6 +49,8 @@ app.use(async function(ctx, next) {
         return;
     }
 
+    ctx.state.categorys = await articleServcie.categoryList();
+    
     if (ctx.session.user) {
         ctx.state.user = ctx.session.user;
         await next();
@@ -61,55 +64,62 @@ app.use(async function(ctx, next) {
         var action = arr.length > 2 ? arr[2] : '';
         var url = controller + '/' + action;
         if (controller == 'api') {
-            console.log(action);
             if (action == '' || action == 'login' || action == 'logout') {
                 await next();
             } else {
-                var ticket = ctx.query.ticket || ctx.request.body.ticket || ctx.headers.ticket;
-                var user = null;
-                if (ticket) {
-                    var userStr = await enuocms.redis.get(ticket);
-                    if (userStr) {
-                        user = JSON.parse(userStr);
-                    }
-                }
+              var ticket = ctx.query.ticket || ctx.request.body.ticket || ctx.headers.ticket;
+              var user = null;
+              if (ticket) {
+                  var userStr = await core.redis.get(ticket);
+                  if (userStr) {
+                      user = JSON.parse(userStr);
+                  }
+              }
+              if (!user || !user.id) {
+                  ctx.json(core.api.error("认证失败，请重新登录后再试！", 401));
+                  return;
+              }
 
-                if (!user || !user.id) {
-                    ctx.json(enuocms.api.error("认证失败，请重新登录后再试！", 401));
-                    return;
-                }
-
-                ctx.state.user = user;
-                await next();
+              ctx.state.user = user;
+              await next();
             }
+        } else if (controller == 'admin') {
+          if (action == 'account') {
+            await next();
+          } else {
+            ctx.session.originalUrl = ctx.originalUrl ? ctx.originalUrl : null;
+            ctx.flash.error = '请先登陆！';
+            await ctx.redirect('/admin/account/login');
+          }
         } else {
-            var openUrl = ['account/login', 'account/logout'];
-            if (openUrl.indexOf(url) > -1) {
-                await next();
-            } else {
-                ctx.session.originalUrl = ctx.originalUrl ? ctx.originalUrl : null;
-                ctx.flash.error = '请先登陆！';
-                await ctx.redirect('/account/login');
-            }
+           await next();
         }
     }
 });
 
-//favicon 
-// router.use(favicon);
-// async function favicon(ctx, next) {
-//     if (ctx.url.match(/favicon\.ico$/)) {
-//         ctx.body = "";
-//         return;
-//     }
-//     await next();
-// };
-// app.use(router.routes());
+
+app.use(async function (ctx, next) {
+  try {
+    await next();
+  } catch (err) {
+    ctx.status = err.status || 500;
+    var info = {
+      error: {
+        status: ctx.status
+      },
+      message: 'Server Error'
+    };
+
+    ctx.type = 'html';
+    await ctx.render('error/index', info);
+    //ctx.body = '<p>Something <em>exploded</em>, please contact Maru.</p>';
+    ctx.app.emit('error', err, ctx);
+  }
+});
 
 app.use(require('./routes/index').routes());
-app.use(require('./routes/category').routes());
 app.use(require('./routes/article').routes());
-app.use(require('./routes/account').routes());
+app.use(require('./routes/admin').routes());
 app.use(require('./routes/api').routes());
 
 app.use(async function pageNotFound(ctx, next) {
@@ -141,25 +151,6 @@ app.use(async function pageNotFound(ctx, next) {
     }
 });
 
-app.use(async function(ctx, next) {
-    try {
-        await next();
-    } catch (err) {
-        ctx.status = err.status || 500;
-        var info = {
-            error: {
-                status: ctx.status
-            },
-            message: 'Server Error'
-        };
-
-        ctx.type = 'html';
-        await ctx.render('error/index', info);
-        //ctx.body = '<p>Something <em>exploded</em>, please contact Maru.</p>';
-
-        ctx.app.emit('error', err, ctx);
-    }
-});
 
 app.on('error', function(err) {
     if (process.env.NODE_ENV != 'development') {
@@ -170,10 +161,10 @@ app.on('error', function(err) {
 
 app.listen(config.port);
 
-enuocms.mysql.debug = config.debug;
-enuocms.mysql.connect(config.mysql);
+core.mysql.debug = config.debug;
+core.mysql.connect(config.mysql);
 
-enuocms.redis.debug = config.debug;
-enuocms.redis.connect(config.redis);
+core.redis.debug = config.debug;
+core.redis.connect(config.redis);
 
 module.exports = app;

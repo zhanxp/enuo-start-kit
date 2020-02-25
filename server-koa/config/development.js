@@ -13,6 +13,10 @@ module.exports = {
         password: '123456',
         database: 'enuocms_test'
     },
+    redis: {
+      host: '127.0.0.1',
+      port: '6379'
+    },
     account: {
         expire_in: 7200,
     }
