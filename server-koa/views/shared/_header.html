@@ -27,14 +27,26 @@
             </ul>
             {% if user %}
             <ul class="nav navbar-nav navbar-right">
+               
+                <li role="presentation" class="dropdown">
+                   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                     aria-expanded="false">
+                    <i class="glyphicon glyphicon-user"></i> {{ user.name }} 你好！ <span class="caret"></span>
+                   </a>
+                   <ul class="dropdown-menu">
+                      <li>
+                        <a href="/admin/profile">个人信息</a>
+                      </li>
+                      <li>
+                        <a href="/admin/password">修改密码</a>
+                      </li>
+                       <li>
+                         <a href="/account/logout" onClick="return confirm('确定要注销吗?');">安全退出</a>
+                       </li>
+                   </ul>
+                 </li>
                 <li>
-                    <a href="/admin/profile">{{ user.name }}  你好！</a>
-                </li>
-                <li>
-                  <a href="/admin">[管理]</a>
-                </li>
-                <li>
-                    <a href="/account/logout" onClick="return confirm('确定要注销吗?');" >[注销]</a>
+                  <a href="/admin"><i class="glyphicon glyphicon-cog"></i> 管理</a>
                 </li>
             </ul>
             {% else %}

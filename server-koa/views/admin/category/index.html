@@ -11,25 +11,20 @@
  <div class="container body-content">
   <h2 class="page-header">
       Ccategory
-      <small>
-          <a href="/category/add">Create</a>
-      </small>
   </h2>
  <div class="row">
    <div class="col-md-2">
      {% include "admin/shared/_menu.html" %}
    </div>
    <div class="col-md-10">
-    <table class="table">
+     <div class="panel panel-default">
+      <div class="panel-heading">
+          <a  onclick="fnAdd()"><i class="glyphicon glyphicon-plus"></i>添加</a>
+      </div>
+       <table class="table table-bordered">
         <tr>
             <th>
                 Title
-            </th>
-            <th>
-                EntTypes
-            </th>
-            <th>
-                EntStatus
             </th>
             <th>
                 Creater
@@ -43,18 +38,14 @@
             <th>
                 UpdateDate
             </th>
-            <th></th>
+            <th>
+              操作
+            </th>
         </tr>
         {% for item in list %}
         <tr>
             <td>
                 {{item.title}}
-            </td>
-            <td>
-                {{item.ent_types}}
-            </td>
-            <td>
-                {{item.ent_status}}
             </td>
             <td>
                 {{item.creater}}
@@ -69,15 +60,81 @@
                 {{ moment(item.update_date).format("YYYY-MM-DD") }}
             </td>
             <td>
-                <a href="/category/edit/{{item.id}}">Edit</a> |
-                <a href="/category/details/{{item.id}}">Details</a>
+                <a onclick="fnEdit({{item.id}})" class="text-primary">修改</a>
+                <a onclick="fnDel({{item.id}})" class="text-danger">删除</a>
             </td>
         </tr>
         {% endfor %}
-    </table>
+        </table>
+      </div>
     </div>
+  </div>
+
+  <div id="formModal" class="modal fade " tabindex="1" role="dialog">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+  <div style="display: none;">
+    <iframe name="frame_save"></iframe>
   </div>
 {% endblock %} 
 
 {% block htmlScript %} 
+<script type="application/javascript">
+  function fnDel(id) {
+    if (!confirm("确定要删除吗？")) {
+      return false;
+    }
+    var url = "/admin/category/delete/" + encodeURI(id) + "?tmp=" + (new Date()).getTime();
+    $.ajax({
+      type: "POST",
+      url: url,
+      success: function (res) {
+        if (res && res.code == 200) {
+          window.location.reload();
+        } else {
+          alert(res.msg);
+        }
+      },
+      error: function (e) {
+        alert("发生错误，删除失败！");
+      }
+    });
+  }
+
+  function fnAdd() {
+    var url = "/admin/category/add?tmp=" + (new Date()).getTime();
+    $('#formModal .modal-content').empty();
+    $("#formModal .modal-content").load(url, function () {
+      $('#formModal').modal({
+        show: true,
+        keyboard: true,
+        backdrop: 'static'
+      });
+    });
+  }
+
+  function fnEdit(id) {
+    var url = "/admin/category/edit/" + encodeURI(id) + "?tmp=" + (new Date()).getTime();
+    $('#formModal .modal-content').empty();
+    $("#formModal .modal-content").load(url, function () {
+      $('#formModal').modal({
+        show: true,
+        keyboard: true,
+        backdrop: 'static'
+      });
+    });
+  }
+
+  function fnCancel() {
+    $('#formModal').modal('hide');
+  }
+
+  function fnOnSaved() {
+    window.location.reload();
+    $('#formModal').modal('hide');
+  }
+</script>
 {% endblock %}

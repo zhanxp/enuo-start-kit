@@ -60,7 +60,7 @@ var articleServcie = {
       return await dao.insert(data);
     },
     delete: async function (id, user_id) {
-      return await dao.delete({
+      return await dao.update({
         is_delete: 1,
         update_date:new Date(),
         updater:user_id

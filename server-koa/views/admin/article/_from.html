@@ -1,0 +1,40 @@
+<form class="form-horizontal" action="/admin/article/save" target="frame_save" method="post">
+  <input type="hidden" name="id" value="{{model.id}}" />
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Title：</label>
+    <div class="col-sm-8">
+      <input type="text" name="title" class="form-control" value="{{ model.title }}" required placeholder="title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Category:</label>
+    <div class="col-sm-8">
+      <input type="text" name="category_id" class="form-control" value="{{ model.category_id }}" required
+        placeholder="category_id">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Intro：</label>
+    <div class="col-sm-8">
+      <input type="text" name="intro" class="form-control" value="{{ model.intro }}" required placeholder="intro">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">PicUrl</label>
+    <div class="col-sm-8">
+      <input type="text" name="pic_url" class="form-control" value="{{ model.pic_url }}" required placeholder="pic_url">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Content：</label>
+    <div class="col-sm-8">
+      <textarea class="form-control" name="content">{{ model.content }}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <button type="submit" class="btn btn-primary">保 存</button>
+      <a onclick="fnCancel()" class="btn btn-default">返 回</a>
+    </div>
+  </div>
+</form>
