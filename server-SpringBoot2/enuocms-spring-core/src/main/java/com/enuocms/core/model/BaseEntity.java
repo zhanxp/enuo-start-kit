@@ -21,6 +21,8 @@ public abstract class BaseEntity {
 
     protected Integer entStatus;
 
+    protected Integer isDelete;
+
     protected Integer creater;
 
     protected Integer updater;

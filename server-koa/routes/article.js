@@ -1,5 +1,6 @@
 const router = require('koa-router')();
 var articleServcie = require('../service/article/articleServcie');
+var categoryService = require('../service/category/categoryService');
 
 /**
  * Created by zhanxiaoping 
@@ -8,11 +9,13 @@ var articleServcie = require('../service/article/articleServcie');
 router.get('/:category', async function (ctx, next) {
     var pageIndex = ctx.query.pageIndex || 1;
     var pageSize = ctx.query.pageSize || 10;
-    var categoryId = ctx.params.category;
+    var category_id = parseInt(ctx.params.category);
 
-    var pageList = await articleServcie.pageList(pageIndex, pageSize, "category_id=?", categoryId);
-    var category = await articleServcie.categoryById(categoryId);
-    var categorys = await articleServcie.categoryList();
+    var pageList = await articleServcie.pageList(pageIndex, pageSize, {
+      category_id: category_id
+    });
+    var category = await categoryService.findById(category_id);
+    var categorys = await categoryService.list();
 
     var pageCount = parseInt((pageList.total + pageList.pageSize - 1) / pageList.pageSize);
 

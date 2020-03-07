@@ -1,6 +1,6 @@
 const router = require('koa-router')();
-var adminService = require('../service/admin/adminServcie');
 var articleServcie = require('../service/article/articleServcie');
+var categoryService = require('../service/category/categoryService');
 
 /**
  * Created by zhanxiaoping 
@@ -19,46 +19,15 @@ router.get('/profile', async function (ctx, next) {
   });
 });
 
-router.get('/account/login', async function(ctx, next) {
-    await ctx.render('admin/account/login', { title: 'Home' });
-});
-
-router.post('/account/login', async function (ctx, next) {
-    var username = ctx.request.body.username;
-    var password = ctx.request.body.password;
-    var user = await adminService.login(username, password);
-    if (user == null) {
-        ctx.flash.error = '用户名密码错误，登录失败！';
-        await ctx.redirect('login');
-        return;
-    }
-
-    ctx.session.user = user;
-
-    var redirectUrl = '/admin';
-    if (ctx.session.originalUrl) {
-        redirectUrl = ctx.session.originalUrl;
-        ctx.session.originalUrl = null;
-    }
-
-    await ctx.redirect(redirectUrl);
-});
-
-router.get('/account/logout', async function (ctx, next) {
-    ctx.session.user = null;
-    await ctx.redirect('/');
-});
-
-router.get('/category/', async function (ctx, next) {
-  var list = await articleServcie.categoryList(null);
+router.get('/category', async function (ctx, next) {
+  var list = await categoryService.list();
   await ctx.render('admin/category/index', {
     title: 'Category',
     list: list
   });
 });
 
-
-router.get('/article/', async function (ctx, next) {
+router.get('/article', async function (ctx, next) {
   var pageIndex = ctx.query.pageIndex || 1;
   var pageSize = ctx.query.pageSize || 10;
 

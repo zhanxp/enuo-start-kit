@@ -8,14 +8,20 @@
 {% endblock %} 
 
 {% block contentBody %}
+ <div class="container body-content">
+
 <h2 class="page-header">
     Article
     <small>
         <a href="/article/add">Create</a>
     </small>
 </h2>
-<table>
 
+<div class="row">
+  <div class="col-md-2">
+    {% include "admin/shared/_menu.html" %}
+  </div>
+  <div class="col-md-10">
     <table class="table">
         <tr>
             <th>
@@ -96,8 +102,8 @@
         {% endfor %}
     </table>
     {% include "shared/_pager.html" %} 
-    
-    
+  </div>
+</div>
 {% endblock %} 
     
 {% block htmlScript %} 

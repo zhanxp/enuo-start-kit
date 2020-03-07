@@ -6,16 +6,13 @@ var config = require('../config');
 
 var adminService = require('../service/admin/adminServcie');
 var articleServcie = require('../service/article/articleServcie');
+var categoryService = require('../service/category/categoryService');
 
 router.get('/', async function(ctx, next) {
     ctx.json(api.success('it works!'));
 });
 
-
 router.post('/login', async function(ctx, next) {
-    // var username = ctx.query.username;
-    // var password = ctx.query.password;
-
     var username = ctx.request.body.username;
     var password = ctx.request.body.password;
     var user = await adminService.login(username, password);
@@ -64,9 +61,7 @@ router.get('/article/detail/:id', async function(ctx, next) {
 });
 
 router.get('/category/list', async function(ctx, next) {
-
-    var list = await articleServcie.categoryList(null);
-
+    var list = await categoryService.list();
     ctx.json(api.data(list));
 });
 

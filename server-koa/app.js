@@ -9,7 +9,7 @@ const session = require('koa-session');
 var flash = require('koa-flash');
 var cors = require('koa-cors');
 var core = require('enuo-core');
-var articleServcie = require('./service/article/articleServcie');
+var categoryService = require('./service/category/categoryService');
 
 /**
  * Created by zhanxiaoping 
@@ -48,52 +48,48 @@ app.use(async function(ctx, next) {
         ctx.body = "";
         return;
     }
-
-    ctx.state.categorys = await articleServcie.categoryList();
     
-    if (ctx.session.user) {
+    var arr = ctx.url.split('/');
+    for (var i = 0, length = arr.length; i < length; i++) {
+      arr[i] = arr[i].split('?')[0];
+    }
+
+    var controller = arr.length > 1 ? arr[1] : '';
+    var action = arr.length > 2 ? arr[2] : '';
+    var url = controller + '/' + action;
+
+    if (controller == 'api') {
+      if (action == '' || action == 'login' || action == 'logout') {
+        await next();
+      } else {
+        var ticket = ctx.query.ticket || ctx.request.body.ticket || ctx.headers.ticket;
+        var user = null;
+        if (ticket) {
+          var userStr = await core.redis.get(ticket);
+          if (userStr) {
+            user = JSON.parse(userStr);
+          }
+        }
+        if (!user || !user.id) {
+          ctx.json(core.api.error("认证失败，请重新登录后再试！", 401));
+          return;
+        }
+        ctx.state.user = user;
+        await next();
+      }
+    } else if (controller == 'admin') {
+      if (ctx.session.user) {
         ctx.state.user = ctx.session.user;
         await next();
-    } else {
-        var arr = ctx.url.split('/');
-        for (var i = 0, length = arr.length; i < length; i++) {
-            arr[i] = arr[i].split('?')[0];
-        }
-
-        var controller = arr.length > 1 ? arr[1] : '';
-        var action = arr.length > 2 ? arr[2] : '';
-        var url = controller + '/' + action;
-        if (controller == 'api') {
-            if (action == '' || action == 'login' || action == 'logout') {
-                await next();
-            } else {
-              var ticket = ctx.query.ticket || ctx.request.body.ticket || ctx.headers.ticket;
-              var user = null;
-              if (ticket) {
-                  var userStr = await core.redis.get(ticket);
-                  if (userStr) {
-                      user = JSON.parse(userStr);
-                  }
-              }
-              if (!user || !user.id) {
-                  ctx.json(core.api.error("认证失败，请重新登录后再试！", 401));
-                  return;
-              }
-
-              ctx.state.user = user;
-              await next();
-            }
-        } else if (controller == 'admin') {
-          if (action == 'account') {
-            await next();
-          } else {
-            ctx.session.originalUrl = ctx.originalUrl ? ctx.originalUrl : null;
-            ctx.flash.error = '请先登陆！';
-            await ctx.redirect('/admin/account/login');
-          }
-        } else {
-           await next();
-        }
+      } else {
+          ctx.session.originalUrl = ctx.originalUrl ? ctx.originalUrl : null;
+          ctx.flash.error = '请先登陆！';
+          await ctx.redirect('/account/login');
+      }
+    } else { 
+      ctx.state.user = ctx.session.user;
+      ctx.state.categorys = await categoryService.list();
+      await next();
     }
 });
 
@@ -112,7 +108,6 @@ app.use(async function (ctx, next) {
 
     ctx.type = 'html';
     await ctx.render('error/index', info);
-    //ctx.body = '<p>Something <em>exploded</em>, please contact Maru.</p>';
     ctx.app.emit('error', err, ctx);
   }
 });
@@ -120,6 +115,7 @@ app.use(async function (ctx, next) {
 app.use(require('./routes/index').routes());
 app.use(require('./routes/article').routes());
 app.use(require('./routes/admin').routes());
+app.use(require('./routes/account').routes());
 app.use(require('./routes/api').routes());
 
 app.use(async function pageNotFound(ctx, next) {

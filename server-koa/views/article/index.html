@@ -18,7 +18,7 @@
    <div class="col-md-8">
 
   <h2 class="page-header">
-      Article-{{ category.title }}
+      {{ category.title }}
   </h2>
 
   <div>
@@ -30,16 +30,7 @@
   </div>
    </div>
   <div class="col-md-4">
-    <h2 class="page-header">
-      Category
-    </h2>
-    <div>
-      <ul class="nav nav-pills nav-stacked">
-        {% for item in categorys %}
-        <li><a href="/article/{{item.id}}">{{ item.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
+    {% include "shared/_categorys.html" %}
   </div>
 </div>
 </div>

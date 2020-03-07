@@ -1,4 +1,4 @@
-var adminDao = require("./dao/adminDao");
+var adminDao = require("./adminDao");
 
 /**
  * Created by zhanxiaoping 
