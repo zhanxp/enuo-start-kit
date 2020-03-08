@@ -11,7 +11,7 @@
  Target Server Version : 50712
  File Encoding         : 65001
 
- Date: 07/03/2020 19:55:10
+ Date: 08/03/2020 12:16:19
 */
 
 SET NAMES utf8mb4;
@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `ent_types` int(11) NOT NULL,
-  `ent_status` int(11) NOT NULL,
+  `ent_types` int(11) NOT NULL DEFAULT '1',
+  `ent_status` int(11) NOT NULL DEFAULT '1',
   `creater` int(11) NOT NULL,
   `updater` int(11) NOT NULL,
   `create_date` datetime NOT NULL,
@@ -50,8 +50,8 @@ DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
-  `ent_types` int(11) NOT NULL,
-  `ent_status` int(11) NOT NULL,
+  `ent_types` int(11) NOT NULL DEFAULT '1',
+  `ent_status` int(11) NOT NULL DEFAULT '1',
   `creater` int(11) NOT NULL,
   `updater` int(11) NOT NULL,
   `create_date` datetime NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `article` (
   `category_id` int(11) NOT NULL,
   `is_delete` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
@@ -79,6 +79,7 @@ INSERT INTO `article` VALUES (8, 'article 6', 1, 1, 1, 1, '2017-08-30 11:15:04',
 INSERT INTO `article` VALUES (9, 'article 7', 1, 1, 1, 1, '2017-08-30 11:15:04', '2017-08-30 11:15:04', 'intro 7', 'http://', 'content7', 3, 0);
 INSERT INTO `article` VALUES (10, 'article 8', 1, 1, 1, 1, '2017-08-30 11:15:04', '2017-08-30 11:15:04', 'intro 8', 'http://', 'content8', 3, 0);
 INSERT INTO `article` VALUES (11, 'article 9', 1, 1, 1, 1, '2017-08-30 11:15:04', '2017-08-30 11:15:04', 'intro 9', 'http://', 'content9', 1, 0);
+INSERT INTO `article` VALUES (12, '213122', 1, 1, 1, 1, '2020-03-07 22:53:42', '2020-03-07 22:57:08', 'ewrewr', NULL, 'weqeqwe', 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -88,15 +89,15 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
-  `ent_types` int(11) NOT NULL,
-  `ent_status` int(11) NOT NULL,
+  `ent_types` int(11) NOT NULL DEFAULT '1',
+  `ent_status` int(11) NOT NULL DEFAULT '1',
   `creater` int(11) NOT NULL,
   `updater` int(11) NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
   `is_delete` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of category
@@ -105,6 +106,7 @@ BEGIN;
 INSERT INTO `category` VALUES (1, '专栏', 0, 1, 1, 1, '2017-08-28 14:26:01', '2017-08-28 14:26:01', 0);
 INSERT INTO `category` VALUES (2, '资讯', 0, 1, 1, 1, '2020-03-07 19:46:15', '2020-03-07 19:46:21', 0);
 INSERT INTO `category` VALUES (3, '新闻', 0, 1, 1, 1, '2020-03-07 19:46:35', '2020-03-07 19:46:38', 0);
+INSERT INTO `category` VALUES (4, 'ddd2', 1, 1, 1, 1, '2020-03-07 23:03:49', '2020-03-07 23:03:52', 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
