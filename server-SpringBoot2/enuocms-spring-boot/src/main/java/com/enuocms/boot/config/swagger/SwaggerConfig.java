@@ -3,7 +3,6 @@ package com.enuocms.boot.config.swagger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -40,8 +39,8 @@ public class SwaggerConfig {
                 .build();
 
         Docket docket = new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo).select()
-                //.apis(RequestHandlerSelectors.basePackage("com.enuocms.boot.controller"))
-                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+                .apis(RequestHandlerSelectors.basePackage("com.enuocms.boot.api"))
+                //.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any()).build().globalOperationParameters(parameters);
 
         return docket;

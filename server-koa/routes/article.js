@@ -6,6 +6,7 @@ var categoryService = require('../service/category/categoryService');
  * Created by zhanxiaoping 
  * zhanxp@me.com
  */
+
 router.get('/:category', async function (ctx, next) {
     var pageIndex = ctx.query.pageIndex || 1;
     var pageSize = ctx.query.pageSize || 10;
@@ -43,5 +44,4 @@ router.get('/detail/:id', async function(ctx, next) {
       categorys: categorys
     });
 });
-router.prefix('/article');
 module.exports = router;

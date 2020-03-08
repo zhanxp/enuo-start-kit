@@ -38,10 +38,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="${base}/admin/profile">个人信息</a>
+                                <a href="${base}/admin/user/profile">个人信息</a>
                             </li>
                             <li>
-                                <a href="${base}/admin/password">修改密码</a>
+                                <a href="${base}/admin/user/password">修改密码</a>
                             </li>
                             <li>
                                 <a href="${base}/account/logout" onClick="return confirm('确定要注销吗?');">安全退出</a>

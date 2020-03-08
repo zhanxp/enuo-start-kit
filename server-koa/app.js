@@ -1,6 +1,5 @@
 var koa = require('koa');
 const logger = require('koa-logger');
-// const router = require('koa-router')();
 const koaBody = require('koa-body');
 const render = require('./views/render');
 const serve = require('koa-static');
@@ -9,9 +8,8 @@ const session = require('koa-session');
 var flash = require('koa-flash');
 var cors = require('koa-cors');
 var core = require('enuo-core');
-var swaggerJSDoc = require('swagger-jsdoc');
+var path = require('path');
 var fs = require('fs');
-const router = require('koa-router')();
 
 /**
  * Created by zhanxiaoping 
@@ -113,13 +111,46 @@ app.use(async function (ctx, next) {
   }
 });
 
-app.use(require('./routes/index').routes());
-app.use(require('./routes/article').routes());
-app.use(require('./routes/admin').routes());
-app.use(require('./routes/account').routes());
-app.use(require('./routes/api').routes());
+// app.use(require('./routes/index').routes());
+// app.use(require('./routes/article').routes());
+// app.use(require('./routes/admin').routes());
+// app.use(require('./routes/account').routes());
+// app.use(require('./routes/api').routes());
+var dir = path.join(__dirname, './routes');
+var files = fs.readdirSync(dir);
+files.forEach(function (file, index) {
+  var curPath = path.join(dir, file);
+  if (fs.statSync(curPath).isDirectory()) {
+    var subfiles = fs.readdirSync(curPath);
+    subfiles.forEach(function (subfile, sindex) {
+      var jsIndex = subfile.indexOf('.js');
+      if (subfile == 'index.js') {
+        var router = require('./routes/' + file);
+        router.prefix('/' + file);
+        app.use(router.routes());
+      } else if (jsIndex > 0) {
+        var name = subfile.substring(0, jsIndex);
+        var router = require('./routes/' + file + '/' + name);
+        router.prefix('/' + file + '/' + name);
+        app.use(router.routes());
+      }
+    });
+  } else {
+    var jsIndex = file.indexOf('.js');
+    var name = file.substring(0, jsIndex);
+    var router = require('./routes/' + name);
+    if (name != 'index') {
+      router.prefix("/"+name);
+    }
+    app.use(router.routes());
+  }
+});
 
+//** swagger-ui */
 if (config.debug==true){
+  const router = require('koa-router')();
+  var swaggerJSDoc = require('swagger-jsdoc');
+
   var options = {
     swaggerDefinition: {
       info: {
@@ -130,7 +161,7 @@ if (config.debug==true){
       host: '127.0.0.1:' + config.port,
       basePath: '/api',
     },
-    apis: ['./routes/api.js'],
+    apis: ['./routes/api/*.js'],
   };
 
   var swaggerSpec = swaggerJSDoc(options);

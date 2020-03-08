@@ -4,13 +4,13 @@ package com.enuocms.core.model;
  * Created by zhanxiaoping on 2020/3/7.
  * zhanxp@me.com
  */
-public class ServiceResult {
+public class ServiceResult<T> {
 
     public ServiceResult(boolean result) {
-        this(result, null);
+        this(result, null,null);
     }
 
-    public ServiceResult(Object data) {
+    public ServiceResult(T data) {
         this(true,"OK",data);
     }
 
@@ -18,18 +18,18 @@ public class ServiceResult {
         this(result, message, null);
     }
 
-    public ServiceResult(boolean result, Object data) {
+    public ServiceResult(boolean result, T data) {
         this(result, null, data);
     }
 
-    public ServiceResult(boolean result, String message, Object data) {
+    public ServiceResult(boolean result, String message, T data) {
         this.result = result;
         this.message = message;
         this.data = data;
     }
 
     public ServiceResult(boolean result, ResultCode errorCode, String message,
-                         Object data) {
+                         T data) {
         this.result = result;
         if(errorCode!= null){
             this.code = errorCode.getCode();
@@ -41,7 +41,7 @@ public class ServiceResult {
     private boolean result;
     private int code;
     private String message;
-    private Object data;
+    private T data;
 
     public boolean isResult() {
         return result;
@@ -63,11 +63,11 @@ public class ServiceResult {
         return new ServiceResult(false, message);
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 

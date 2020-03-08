@@ -33,5 +33,4 @@ router.get('/logout', async function (ctx, next) {
   await ctx.redirect('/');
 });
 
-router.prefix('/account');
 module.exports = router;
