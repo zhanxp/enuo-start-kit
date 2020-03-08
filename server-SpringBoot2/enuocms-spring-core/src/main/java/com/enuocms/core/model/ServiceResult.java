@@ -10,6 +10,10 @@ public class ServiceResult {
         this(result, null);
     }
 
+    public ServiceResult(Object data) {
+        this(true,"OK",data);
+    }
+
     public ServiceResult(boolean result, String message) {
         this(result, message, null);
     }

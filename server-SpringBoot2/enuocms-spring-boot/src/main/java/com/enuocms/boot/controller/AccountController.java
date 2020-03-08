@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,34 +24,6 @@ public class AccountController {
     public String login(){
         return "/account/login";
     }
-
-//    @RequestMapping(value = "login", method = RequestMethod.POST)
-//    public String login( Model model,
-//                         HttpServletRequest request,
-//                         String username,
-//                         String password,
-//                         Boolean rememberMe){
-//
-//        String error = null;
-//        String errorClassName = (String)request.getAttribute("shiroLoginFailure");
-//        if(UnknownAccountException.class.getName().equals(errorClassName)) {
-//            error = "用户不存在";
-//        } else if(IncorrectCredentialsException.class.getName().equals(errorClassName)) {
-//            error = "您输入的密码不正确";
-//        } else if(DisabledAccountException.class.getName().equals(errorClassName)) {
-//            error = "账户已被禁用,请联系客服人员!";
-//        }  else if(errorClassName != null) {
-//            error = "用户名/密码错误";
-//        }
-//
-//        if (error != null) {// 出错了，返回登录页面
-//            model.addAttribute("error", error);
-//            return "/account/login";
-//        } else {
-//            return null;
-//        }
-//
-//    }
 
     @RequestMapping(value = "checkLogin", method = RequestMethod.POST)
     public String login( Model model,

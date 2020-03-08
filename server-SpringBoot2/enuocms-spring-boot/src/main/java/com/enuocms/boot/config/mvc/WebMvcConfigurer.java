@@ -30,7 +30,10 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 //            registry.addResourceHandler("/**").addResourceLocations(
 //                    RESOURCE_LOCATIONS);
 //        }
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations(
+                "classpath:/META-INF/resources/");
 
+        super.addResourceHandlers(registry);
     }
 
     @Override
@@ -41,11 +44,12 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        String[] swaggerPatterns = {"/swagger-ui.html/**", "/webjars/**", "/swagger-resources/**"};
+        //String[] swaggerPatterns = {"/swagger-ui.html/**", "/webjars/**", "/swagger-resources/**"};
         registry.addInterceptor(enuoAuthorizationInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns(swaggerPatterns)
-                .excludePathPatterns("/account/**","/api/**","/error/**");
+                .addPathPatterns("/admin/**","/api/**")
+                .excludePathPatterns("/api/account/**");
+                //.excludePathPatterns(swaggerPatterns)
+                //.excludePathPatterns("/account/**","/api/account/**","/error/**");
 
         super.addInterceptors(registry);
     }

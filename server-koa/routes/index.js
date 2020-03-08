@@ -27,7 +27,12 @@ router.get('/', async function(ctx, next) {
 });
 
 router.get('/about', async function(ctx, next) {
-    await ctx.render('home/about', { title: 'About' });
+    var categorys = await categoryService.list();
+    var data = {
+      title: 'About',
+      categorys: categorys
+    };
+    await ctx.render('home/about', data);
 });
 
 module.exports = router;

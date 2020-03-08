@@ -1,11 +1,12 @@
-# server-koa  
-node koa 项目模板，包括:认证、登录、文章、分类  
+# server-spring boot 2.0  
+spring boot 2.0  项目模板，包括:认证、登录、文章、分类  
 
 ## install
-npm install
+mvn clean install
+mvn package
 
 ## run
-npm run start 
+java -jar ./enuocms-spring-boot/target/enuocms-spring-boot-1.0-SNAPSHOT.jar
 
 ## 使用
 前台： http://localhost:8090/

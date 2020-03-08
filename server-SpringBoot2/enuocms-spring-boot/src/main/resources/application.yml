@@ -63,38 +63,11 @@ spring:
           testOnReturn: false
           poolPreparedStatements: true
           maxOpenPreparedStatements: 20
-#  datasource:
-#    url: jdbc:mysql://127.0.0.1:3306/enuocms_test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-#    username: root
-#    password: 123456
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    driver-class-name: com.mysql.jdbc.Driver
-#    filters: stat
-#    maxActive: 20
-#    initialSize: 1
-#    maxWait: 60000
-#    minIdle: 1
-#    timeBetweenEvictionRunsMillis: 60000
-#    minEvictableIdleTimeMillis: 300000
-#    validationQuery: select 'x'
-#    testWhileIdle: true
-#    testOnBorrow: false
-#    testOnReturn: false
-#    poolPreparedStatements: true
-#    maxOpenPreparedStatements: 20
   freemarker:
     template-loader-path: classpath:/templates
     auto_import: /shared/common.ftl as p
   mvc:
     static-path-pattern: /static/**
-#mybatis:
-#  type-aliases-package: com.enuocms.account.*.mapper
-#  type-handlers-package: com.enuocms.core.mapper
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    default-fetch-size: 100
-#    default-statement-timeout: 30
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.enuocms.*.model
@@ -111,6 +84,8 @@ log4j:
   rootLogger: WARN
 logging:
   file: /tmp/enuocms-boot-debug.log
+swagger:
+  enabled: true
 ---
 enuo:
   version: 1.0.0

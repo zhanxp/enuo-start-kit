@@ -1,13 +1,18 @@
 package com.enuocms.boot.controller;
 
 import com.enuocms.business.model.Article;
+import com.enuocms.business.model.Category;
 import com.enuocms.business.service.ArticleService;
+import com.enuocms.business.service.CategoryService;
 import com.enuocms.core.model.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import springfox.documentation.annotations.ApiIgnore;
+
+import java.util.List;
 
 /**
  * Created by zhanxiaoping on 2017/8/30.
@@ -21,14 +26,20 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
-    @RequestMapping("")
-    public String index(Model model, Integer pageIndex,Integer pageSize,Article quert) {
+    @Autowired
+    CategoryService categoryService;
 
-        PageResult<Article> pagelist = articleService.selectPage(quert,
-                pageIndex==null?1:pageIndex,
-                pageSize==null?10:pageSize);
+    @RequestMapping("/{category}")
+    public String index(Model model,@PathVariable int category, Integer pageIndex,Integer pageSize,Article query) {
+
+        query.setIsDelete(0);
+        query.setCategoryId(category);
+
+        PageResult<Article> pagelist = articleService.pageList(pageIndex,pageSize,query);
+        List<Category> categorys = categoryService.list(null);
 
         model.addAttribute("pageList",pagelist);
+        model.addAttribute("categorys",categorys);
         return "/article/index";
     }
 
@@ -46,10 +57,13 @@ public class ArticleController {
         return "/article/edit";
     }
 
-    @RequestMapping("details/{id}")
+    @RequestMapping("detail/{id}")
     public String details(Model model, @PathVariable int id) {
         Article ent = articleService.get(id);
+        List<Category> categorys = categoryService.list(null);
+
         model.addAttribute("model",ent);
-        return "/article/details";
+        model.addAttribute("categorys",categorys);
+        return "/article/detail";
     }
 }

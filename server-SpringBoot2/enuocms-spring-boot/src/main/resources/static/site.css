@@ -30,3 +30,17 @@ body {
     padding:5px;
     color:red;
 }
+
+
+.page-mod {
+    position: relative;
+}
+
+.page-mod .result {
+    position: absolute;
+    top: 8px;
+}
+
+.page-mod nav ul.pagination {
+    margin: 0;
+}

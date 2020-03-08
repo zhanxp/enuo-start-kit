@@ -12,7 +12,6 @@ var core = require('enuo-core');
 var swaggerJSDoc = require('swagger-jsdoc');
 var fs = require('fs');
 const router = require('koa-router')();
-var categoryService = require('./service/category/categoryService');
 
 /**
  * Created by zhanxiaoping 
@@ -91,7 +90,6 @@ app.use(async function(ctx, next) {
       }
     } else { 
       ctx.state.user = ctx.session.user;
-      ctx.state.categorys = await categoryService.list();
       await next();
     }
 });
@@ -121,39 +119,41 @@ app.use(require('./routes/admin').routes());
 app.use(require('./routes/account').routes());
 app.use(require('./routes/api').routes());
 
-var options = {
-  swaggerDefinition: {
-    info: {
-      title: 'Node Swagger API',
-      version: '2.0.0',
-      description: 'Demonstrating how to desribe a RESTful API with Swagger',
+if (config.debug==true){
+  var options = {
+    swaggerDefinition: {
+      info: {
+        title: 'Node Swagger API',
+        version: '2.0.0',
+        description: 'Demonstrating how to desribe a RESTful API with Swagger',
+      },
+      host: '127.0.0.1:' + config.port,
+      basePath: '/api',
     },
-    host: '127.0.0.1:' + config.port,
-    basePath: '/api',
-  },
-  apis: ['./routes/api.js'],
-};
+    apis: ['./routes/api.js'],
+  };
 
-var swaggerSpec = swaggerJSDoc(options);
-router.get('/doc/api-docs', function (ctx, next) {
-  ctx.json(swaggerSpec);
-});
+  var swaggerSpec = swaggerJSDoc(options);
+  router.get('/v2/api-docs', function (ctx, next) {
+    ctx.json(swaggerSpec);
+  });
 
-const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
-app.use(serve(pathToSwaggerUi, {
-  index: 'swagger-ui.html'
-}));
-const indexContent = fs.readFileSync(`${pathToSwaggerUi}/index.html`)
-  .toString()
-  .replace("https://petstore.swagger.io/v2/swagger.json", "/doc/api-docs");
+  const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
+  app.use(serve(pathToSwaggerUi, {
+    index: 'swagger-ui.html'
+  }));
+  const indexContent = fs.readFileSync(`${pathToSwaggerUi}/index.html`)
+    .toString()
+    .replace("https://petstore.swagger.io/v2/swagger.json", "/v2/api-docs");
 
-//swagger-ui.html
-router.get("/doc", function (ctx, next) {
-  ctx.type = 'html';
-  ctx.body = indexContent;
-});
+  //swagger-ui.html
+  router.get("/swagger-ui.html", function (ctx, next) {
+    ctx.type = 'html';
+    ctx.body = indexContent;
+  });
 
-app.use(router.routes());
+  app.use(router.routes());
+}
 
 app.use(async function pageNotFound(ctx, next) {
     var info = {

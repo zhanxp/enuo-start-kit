@@ -37,8 +37,10 @@ router.get('/:category', async function (ctx, next) {
 router.get('/detail/:id', async function(ctx, next) {
     var id = ctx.params.id;
     var model = await articleServcie.findById(id);
+    var categorys = await categoryService.list();
     await ctx.render('article/detail', {
-      model: model
+      model: model,
+      categorys: categorys
     });
 });
 router.prefix('/article');

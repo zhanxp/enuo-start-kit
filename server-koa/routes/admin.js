@@ -14,8 +14,10 @@ router.get('/', async function (ctx, next) {
 });
 
 router.get('/profile', async function (ctx, next) {
+  var user = ctx.state.user;
   await ctx.render('admin/user/profile', {
-    title: 'Profile'
+    title: 'Profile',
+    model: user
   });
 });
 
@@ -86,9 +88,11 @@ router.get('/article', async function (ctx, next) {
 
   var pageList = await articleServcie.pageList(pageIndex, pageSize);
   var pageCount = parseInt((pageList.total + pageList.pageSize - 1) / pageList.pageSize);
+  var categorys = await categoryService.list();
 
   var data = {
     title: 'Article',
+    categorys: categorys,
     pageList: pageList,
     pageIndex: pageList.pageIndex,
     pageSize: pageList.pageSize,
