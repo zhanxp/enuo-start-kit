@@ -13,9 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AdminService extends BaseServiceImpl<Admin>  {
 
-    public Admin getByName(String username) {
+    public  Admin getByName(String username){
         Admin query = new Admin();
         query.setName(username);
+        return selectOne(query);
+    }
+
+    public Admin findLoginUser(String username,String password) {
+        Admin query = new Admin();
+        query.setName(username);
+        query.setPassword(password);
         return selectOne(query);
     }
 }

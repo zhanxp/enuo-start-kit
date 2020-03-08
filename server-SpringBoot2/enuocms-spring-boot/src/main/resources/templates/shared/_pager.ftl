@@ -8,7 +8,7 @@
         <#assign pageIndex=1>
     </#if>
 <div class="page-mod">
-    <div class="result">
+    <div class="success">
         共${total}条数据,分${pageCount}页,每页显示${pageSize}条
     </div>
     <nav class="text-right" >

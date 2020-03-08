@@ -1,5 +1,6 @@
 package com.enuocms.boot.config.mvc;
 
+import com.enuocms.boot.interceptor.EnuoApiInterceptor;
 import com.enuocms.boot.interceptor.EnuoAuthorizationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,16 +21,18 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         return new EnuoAuthorizationInterceptor();
     }
 
+    @Bean
+    public EnuoApiInterceptor enuoApiInterceptor() {
+        return new EnuoApiInterceptor();
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         if (!registry.hasMappingForPattern("/webjars/**")) {
             registry.addResourceHandler("/webjars/**").addResourceLocations(
                     "classpath:/META-INF/resources/webjars/");
         }
-//        if (!registry.hasMappingForPattern("/**")) {
-//            registry.addResourceHandler("/**").addResourceLocations(
-//                    RESOURCE_LOCATIONS);
-//        }
+
         registry.addResourceHandler("swagger-ui.html").addResourceLocations(
                 "classpath:/META-INF/resources/");
 
@@ -44,12 +47,13 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //String[] swaggerPatterns = {"/swagger-ui.html/**", "/webjars/**", "/swagger-resources/**"};
         registry.addInterceptor(enuoAuthorizationInterceptor())
-                .addPathPatterns("/admin/**","/api/**")
-                .excludePathPatterns("/api/account/**");
-                //.excludePathPatterns(swaggerPatterns)
+                .addPathPatterns("/admin/**");
                 //.excludePathPatterns("/account/**","/api/account/**","/error/**");
+
+        registry.addInterceptor(enuoApiInterceptor())
+                .addPathPatterns("/api/**")
+                .excludePathPatterns("/api/login");
 
         super.addInterceptors(registry);
     }

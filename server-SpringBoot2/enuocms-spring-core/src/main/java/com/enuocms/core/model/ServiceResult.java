@@ -1,83 +1,38 @@
 package com.enuocms.core.model;
 
+import lombok.Data;
+
 /**
  * Created by zhanxiaoping on 2020/3/7.
  * zhanxp@me.com
  */
+@Data
 public class ServiceResult<T> {
 
-    public ServiceResult(boolean result) {
-        this(result, null,null);
+    public ServiceResult(boolean success) {
+        this(200, null,null);
     }
 
     public ServiceResult(T data) {
-        this(true,"OK",data);
+        this(ResultCode.NONE,data);
     }
 
-    public ServiceResult(boolean result, String message) {
-        this(result, message, null);
+
+    public ServiceResult(ResultCode code,T data) {
+        this(code.getCode(),code.getDisplay(),data);
     }
 
-    public ServiceResult(boolean result, T data) {
-        this(result, null, data);
-    }
-
-    public ServiceResult(boolean result, String message, T data) {
-        this.result = result;
+    public ServiceResult(Integer code, String message,T data) {
+        this.success = code == 200;
+        this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public ServiceResult(boolean result, ResultCode errorCode, String message,
-                         T data) {
-        this.result = result;
-        if(errorCode!= null){
-            this.code = errorCode.getCode();
-        }
-        this.message = message;
-        this.data = data;
-    }
-
-    private boolean result;
+    private boolean success;
     private int code;
     private String message;
     private T data;
-
-    public boolean isResult() {
-        return result;
-    }
-
-    public void setResult(boolean result) {
-        this.result = result;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public static ServiceResult createFailureResult(String message) {
-        return new ServiceResult(false, message);
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(ResultCode code) {
-        this.code = code.getCode();
-    }
 
     public enum ResultCode {
         NONE("OK", 200),
