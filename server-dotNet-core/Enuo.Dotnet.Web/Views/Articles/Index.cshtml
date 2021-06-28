@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Enuo.Dotnet.Model.Article>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.intro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.picUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.entTypes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.entStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creater)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updater)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updateDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.intro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.picUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.entTypes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.entStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creater)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updater)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updateDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

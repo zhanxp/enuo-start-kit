@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Enuo.Dotnet.Service</RootNamespace>
+    <AssemblyName>Enuo.Dotnet.Service</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Enuo.Dotnet.Core\Enuo.Dotnet.Core.csproj" />
+    <ProjectReference Include="..\Enuo.Dotnet.Model\Enuo.Dotnet.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.0+m8.0.23" />
+  </ItemGroup>
+
+</Project>

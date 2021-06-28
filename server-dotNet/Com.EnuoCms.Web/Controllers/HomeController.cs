@@ -12,21 +12,21 @@ using Com.EnuoCms.IService;
  */
 namespace Com.EnuoCms.Web.Controllers
 {
-    [RoutePrefix("")]
-    public class HomeController : Controller
+  [RoutePrefix("")]
+  public class HomeController : Controller
+  {
+    [Route]
+    public ActionResult Index()
     {
-		[Route]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        [Route("about")]
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
-
+      return View();
     }
+
+    [Route("about")]
+    public ActionResult About()
+    {
+      ViewBag.Message = "Your application description page.";
+      return View();
+    }
+
+  }
 }

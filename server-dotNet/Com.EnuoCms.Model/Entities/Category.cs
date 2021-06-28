@@ -12,17 +12,17 @@ using System.ComponentModel.DataAnnotations.Schema;
  */
 namespace Com.EnuoCms.Model.Entities
 {
-    [Table("category")]
-    public class Category : BaseEntity
-    {
-		//[Key]
-		//[Column("id")]
-		//public int ID { get; set; }
+  [Table("category")]
+  public class Category : BaseEntity
+  {
+    //[Key]
+    //[Column("id")]
+    //public int ID { get; set; }
 
-		[Required]
-		[MaxLength(200)]
-		[Column("title")]
-        [Display(Name = "名称")]
-		public string Title { get; set; }
-    }
+    [Required]
+    [MaxLength(200)]
+    [Column("title")]
+    [Display(Name = "名称")]
+    public string Title { get; set; }
+  }
 }

@@ -12,37 +12,37 @@ using System.ComponentModel.DataAnnotations.Schema;
  */
 namespace Com.EnuoCms.Model.Entities
 {
-	[Table("article")]
-    public class Article : BaseEntity
-    {
-		//[Key]
-		//[Column("id")]
-		//public int ID { get; set; }
+  [Table("article")]
+  public class Article : BaseEntity
+  {
+    //[Key]
+    //[Column("id")]
+    //public int ID { get; set; }
 
-        [Required]
-        [MaxLength(200)]
-        [Column("title")]
-		[Display(Name = "名称")]
-        public string Title { get; set; }
+    [Required]
+    [MaxLength(200)]
+    [Column("title")]
+    [Display(Name = "名称")]
+    public string Title { get; set; }
 
-        [MaxLength(500)]
-        [Column("intro")]
-		[Display(Name = "简介")]
-        public string Intro { get; set; }
+    [MaxLength(500)]
+    [Column("intro")]
+    [Display(Name = "简介")]
+    public string Intro { get; set; }
 
-        [MaxLength(500)]
-		[Column("pic_url")]
-		[Display(Name = "图片")]
-        public string PicUrl { get; set; }
+    [MaxLength(500)]
+    [Column("pic_url")]
+    [Display(Name = "图片")]
+    public string PicUrl { get; set; }
 
-        [Required]
-        [Column("category_id")]
-		[Display(Name = "分类")]
-        public int CategoryID { get; set; }
+    [Required]
+    [Column("category_id")]
+    [Display(Name = "分类")]
+    public int CategoryID { get; set; }
 
-        [Column("content")]
-		[Display(Name = "内容")]
-        public string Content { get; set; }
+    [Column("content")]
+    [Display(Name = "内容")]
+    public string Content { get; set; }
 
-    }
+  }
 }

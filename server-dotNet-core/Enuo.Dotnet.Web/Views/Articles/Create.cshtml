@@ -1,0 +1,83 @@
+﻿@model Enuo.Dotnet.Model.Article
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Article</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="intro" class="control-label"></label>
+                <input asp-for="intro" class="form-control" />
+                <span asp-validation-for="intro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="picUrl" class="control-label"></label>
+                <input asp-for="picUrl" class="form-control" />
+                <span asp-validation-for="picUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryID" class="control-label"></label>
+                <input asp-for="categoryID" class="form-control" />
+                <span asp-validation-for="categoryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="content" class="control-label"></label>
+                <input asp-for="content" class="form-control" />
+                <span asp-validation-for="content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="entTypes" class="control-label"></label>
+                <input asp-for="entTypes" class="form-control" />
+                <span asp-validation-for="entTypes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="entStatus" class="control-label"></label>
+                <input asp-for="entStatus" class="form-control" />
+                <span asp-validation-for="entStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="creater" class="control-label"></label>
+                <input asp-for="creater" class="form-control" />
+                <span asp-validation-for="creater" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="updater" class="control-label"></label>
+                <input asp-for="updater" class="form-control" />
+                <span asp-validation-for="updater" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="createDate" class="control-label"></label>
+                <input asp-for="createDate" class="form-control" />
+                <span asp-validation-for="createDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="updateDate" class="control-label"></label>
+                <input asp-for="updateDate" class="form-control" />
+                <span asp-validation-for="updateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
