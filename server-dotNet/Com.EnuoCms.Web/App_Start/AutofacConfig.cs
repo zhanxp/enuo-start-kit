@@ -13,38 +13,38 @@ using System.Web.Http.Controllers;
 
 namespace Com.EnuoCms.Web
 {
-    public static class AutofacConfig
+  public static class AutofacConfig
+  {
+
+    public static void RegisterDependencies()
     {
-      
-        public static void RegisterDependencies()
-        {
-            var builder = new ContainerBuilder();
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<DefaultCommandBus>().As<ICommandBus>().InstancePerRequest();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().InstancePerRequest();
+      var builder = new ContainerBuilder();
+      builder.RegisterControllers(Assembly.GetExecutingAssembly());
+      builder.RegisterType<DefaultCommandBus>().As<ICommandBus>().InstancePerRequest();
+      builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+      builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().InstancePerRequest();
 
-            builder.RegisterAssemblyTypes(typeof(AdminRepository).Assembly)
-            .Where(t => t.Name.EndsWith("Repository"))
-            .AsImplementedInterfaces().InstancePerRequest();
+      builder.RegisterAssemblyTypes(typeof(AdminRepository).Assembly)
+      .Where(t => t.Name.EndsWith("Repository"))
+      .AsImplementedInterfaces().InstancePerRequest();
 
-            var services = typeof(AdminCreateOrUpdateCommandHandler).Assembly;
-            //var services = Assembly.Load("Com.EnuoCms.Domain");
-            builder.RegisterAssemblyTypes(services).AsClosedTypesOf(typeof(ICommandHandler<>)).InstancePerRequest();
-            builder.RegisterAssemblyTypes(services).AsClosedTypesOf(typeof(IValidationHandler<>)).InstancePerRequest();
+      var services = typeof(AdminCreateOrUpdateCommandHandler).Assembly;
+      //var services = Assembly.Load("Com.EnuoCms.Domain");
+      builder.RegisterAssemblyTypes(services).AsClosedTypesOf(typeof(ICommandHandler<>)).InstancePerRequest();
+      builder.RegisterAssemblyTypes(services).AsClosedTypesOf(typeof(IValidationHandler<>)).InstancePerRequest();
 
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+      builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<DefaultFormsAuthentication>().As<IFormsAuthentication>().InstancePerRequest();
-            builder.RegisterFilterProvider();
+      builder.RegisterType<DefaultFormsAuthentication>().As<IFormsAuthentication>().InstancePerRequest();
+      builder.RegisterFilterProvider();
 
-            IContainer container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+      IContainer container = builder.Build();
+      DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            //var resolver = new AutofacDependencyResolver(container);
-            //GlobalConfiguration.Configuration.ServiceResolver.SetResolver(
-            //    t => resolver.GetService(t),
-            //    t => resolver.GetServices(t));
-        }
+      //var resolver = new AutofacDependencyResolver(container);
+      //GlobalConfiguration.Configuration.ServiceResolver.SetResolver(
+      //    t => resolver.GetService(t),
+      //    t => resolver.GetServices(t));
     }
+  }
 }
